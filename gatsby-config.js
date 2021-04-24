@@ -6,7 +6,11 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitle: `Sibo Yang`,
+    siteTitleAlt: `Sibo Yang`,
+    siteHeadline: `Sibo Yang`,
+    siteDescription: `Sibo Yang Software Engineering McGill University`,
+    siteLanguage: `en`,
   },
   plugins: [
     {
@@ -25,12 +29,12 @@ module.exports = {
         ],
         externalLinks: [
           {
-            name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            name: `Linkedin`,
+            url: `https://www.linkedin.com/in/sibo-yang-042b92194/`,
           },
           {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            name: `Github`,
+            url: `https://github.com/SiboYang`,
           },
         ],
       },
