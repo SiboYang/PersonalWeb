@@ -1,10 +1,61 @@
 ---
-title: 前端面试准备
-date: 2021-04-09
+title: React杂记
+date: 2021-06-18
+description: 用于记录使用React进行开发时遇到的问题以及解释
 tags:
-  - Javascript
+  - React, JavaScript
 ---
-### JS
----
-[原型及原型链常考](https://juejin.cn/post/6844904093828251662)
-[Call, Appy, Bind](https://hijiangtao.github.io/2017/05/07/Full-Usage-of-Apply-Call-and-Bind-in-JavaScript/)
+今年暑期是使用React的前端开发实习，在开发中经常会上网搜索一些自己无法解释的现象，
+于是决定用这个板块把自己遇到的问题及解决记录下来，刚入门React的同学可能在开发中和我产生过相同的疑问，
+希望能帮到大家。（持续更新）
+
+<hr/>
+
+### [React组件为何会渲染两次](https://andreasheissenberger.medium.com/react-components-render-twice-any-way-to-fix-this-91cf23961625)
+
+```js
+function App() {
+    const [click, setClick] = React.useState(0);
+    console.log('I render 😡', click);
+    return (
+        <div>
+            <button onClick={() => setClick(click => click + 1)}>
+                Clicks: {click}
+            </button>
+        </div>
+    )
+}
+```
+
+如果我们是用`create-react-app`来创建的项目的话，
+我们会发现，当我们运行项目时，浏览器控制台的输出会是
+```
+I render 😡 0
+I render 😡 0
+```
+如果我们点击摁钮的话，浏览器控制台的输出会是
+```
+I render 😡 1
+I render 😡 1
+```
+很奇怪，为什么会渲染两次？
+
+我们去看`index.js`，其实原因就在这里，`App`组件被包裹在了`React.StrictMode`里
+```js
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+什么是(StrictMode)[https://reactjs.org/docs/strict-mode.html], 根据react文档
+> StrictMode is a tool for highlighting potential problems 
+in an application. Like Fragment, 
+StrictMode does not render any visible UI. 
+It activates additional checks and warnings for its descendants.
+
+StrictMode会渲染组件两次来运行一些额外的检查，但并不用担心额外的渲染会造成性能损耗，
+因为StrictMode只有在开发环境下会生效。
+<hr/>
+
