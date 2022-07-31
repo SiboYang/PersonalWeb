@@ -2,7 +2,7 @@ import { tint } from "@theme-ui/color"
 
 const code = {
   "[data-name='live-editor']": {
-    fontSize: 1,
+    fontSize: 0.5,
     "textarea, pre": {
       padding: (t: any) => `${t.space[3]} !important`,
     },
@@ -12,7 +12,7 @@ const code = {
     backgroundColor: tint(`primary`, 0.7),
   },
   ".prism-code": {
-    fontSize: [1, 1, 2],
+    fontSize: [0.5, 0.5, 1],
     padding: `2rem 1rem 1rem 1rem`,
     webkitOverflowScrolling: `touch`,
     backgroundColor: `transparent`,
@@ -42,7 +42,7 @@ const code = {
     borderRadius: `2px`,
   },
   ".gatsby-highlight": {
-    fontSize: [1, 1, 2],
+    fontSize: [0.5, 0.5, 1],
     position: `relative`,
     webkitOverflowScrolling: `touch`,
     bg: `rgb(1, 22, 39)`,
@@ -197,7 +197,7 @@ const code = {
   },
   "[data-name='live-preview'], [data-name='live-editor']": {
     mx: [0, 0, 0, -3],
-    fontSize: [1, 1, 2],
+    fontSize: [0.5, 0.5, 1],
   },
   ".token-line": {
     pr: 3,
