@@ -24,6 +24,14 @@ const Footer = () => {
         &copy; {new Date().getFullYear()} by {siteTitle}.
       </div>
       <div>
+      <Link
+          aria-label="Link to the github pull request"
+          href="https://github.com/SiboYang/PersonalWeb/issues"
+        >
+          Suggest changes
+        </Link>
+      </div>
+      <div>
         <Link
           aria-label="Link to the theme's GitHub repository"
           href="https://github.com/LekoArts/gatsby-themes/tree/master/themes/gatsby-theme-minimal-blog"
