@@ -1,0 +1,35 @@
+---
+title: Clean Code Reading Notes (1)
+date: 2022-09-24
+description: 
+tags:
+    - Reading
+---
+## Meaningful Names
+- **Use Intention-Revealing Names**：
+  - It should tell you why it eists, what is does, and how it is used. If a name requres a comment, then the name does not reveal its intent.
+- **Avoid Disinformation**: 
+  - Do not refer to a grouping of accounts as an accountList unless it's actually a `List`. `accountGroup` or `bunchOfAccounts` or just plain `accounts` would be better. 
+  - Truly awful example of disinformative names would be the use of lowercase L or uppercase O as vairable names.
+- **Make Meaningful Distinctions**:
+  - Number-series naming (a1, a2,  .. , an) is the opposite of intentional naming. They are noninformative.
+  - Noise words are another meaningliess disctinction. `ProdcutData` and `ProdcuctInfo` have different names but doesn't mean differently.
+- **Use Pronounceable Name**: 
+  - If you can't pronounce it, you can't discuss it without sounding like an idiot.
+- **User Searchable Names**: 
+  - Single letter names can ONLY be used as local variables inside short methods.
+  - The length of a name should correspond to the size of its scope.
+- **Class Names**:
+  - Class and objects should have nounor noun phrase names, a class name should not be a verb.
+- **Method Names**:
+  -  Methods should have verb or verb phrase names.
+- **Pick One Wrod per Concept**:
+  - It's is confusing to have `fetch`, `retrieve` and `get` as equivalent methods of different classes.
+  - Likewise, it's is confusing to have a `controller` and a `manager` and a `driver` in the same code base.
+  - A consistent lexicon is a great boon to the programmer who must use your code.
+- **Don't Pun**:
+  - Avoid using the same word for two purposes.
+  - One may decide to use the word for "consistency" when he or she is not in fact adding in the same sense.
+- **Add Meaningful Context**:
+  - We need to place names in context for our reader by enclosing them in well-named classes, functions or namespaces. When all else fails, then prefixing the name may be a necessary as a last, resort.
+  - `state` as a variable name is self is confusing, but we can put it in a `Address` class, or even add context by using prefixes like `addrState`
