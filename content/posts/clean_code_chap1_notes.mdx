@@ -1,5 +1,5 @@
 ---
-title: Clean Code Reading Notes (1)
+title: Clean Code Reading Notes
 date: 2022-09-24
 description: 
 tags:
@@ -33,3 +33,29 @@ tags:
 - **Add Meaningful Context**:
   - We need to place names in context for our reader by enclosing them in well-named classes, functions or namespaces. When all else fails, then prefixing the name may be necessary as a last, resort.
   - `state` as a variable name is self is confusing, but we can put it in an `Address` class, or even add context by using prefixes like `addrState`
+
+## Functions
+- **Do One Thing**:
+  - Functions should be very small.
+  - If a function does only those steps that are one level below the stated name of the function, then the function is doing one thing.
+  - A way to know that a function is doing more than "one thing" is if you can extract another function from it with a name that is not merely a restatement of its implementation.
+- **One Level of Abstraction per Function**：
+  - Functions cannot be at a high level of abstraction, such as `getHTML()` and low level of abstraction like `.append('\n')` at the same time.
+  - Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail.
+-  **Switch Statements**:
+     - It's hard to make a small **switch** statement. It's also hard to make a switch statement that does one thing. By their nature, **switch** statements always do N things. 
+     - Unfortunately we can't always avoid **switch** statements, but we can make sure that each switch statement is buried in a low-level class and is never repeated. We do this with polymorphism.
+
+- **Function Arugments**:
+  - The number of function arguments should be as small as possible. It shouldn't be more than three.
+  - Flag arguments are ugly. It not only immediately complicates the signature of the method, but also loudly proclaims that this function does more than one thing.
+  - Reducing the number of arguments by creating objects out of them may seem like cheating, but it's not. When groups of variables are passed together, they are likely part of a concept that deserves a name of its own.
+- **Have No Side Effects**:
+  - Functions promise to do one thing, they should not do hidden things. 
+  - Sometimes it will make unexpected changes to the variables of its own class, sometimes it will make them to the parameters passed into the function or to the system globals.
+- **Command Query Separation**:
+  - Functions should either do something or answer something, but not both.
+- **Error handling**:
+  - Returning error codes from command functions is a subtle violation of command query separation. It promotes commands being used as expressions in the predicates of **if** statements, such as `if(delete(item)) == E_OK)`
+  - It is better to extract the bodies of the **try** and **catch** blocks out into functions of their own because they confuse the structure of the code and mix error processing with normal processing. It makes the function do more than one thing. 
+  
